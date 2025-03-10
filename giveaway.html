@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giveaway Chess Sets</title>
+    
+    <!-- Open Graph Meta Tags for WhatsApp Preview -->
+    <meta property="og:title" content="Giveaway - Win a Free Chess Set">
+    <meta property="og:description" content="Write a Google review & send a screenshot on WhatsApp for a chance to win a chess set!">
+    <meta property="og:image" content="https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png"> <!-- Replace with hosted image URL -->
+    <meta property="og:url" content="https://suppy29.github.io/Giveaway/"> <!-- Replace with your hosted page link -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #f3e6d4, #d4af7a);
+            color: #3d1d0f;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .title { font-size: 36px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+        .subtitle { font-size: 22px; font-weight: 600; text-transform: uppercase; border-bottom: 3px solid #3d1d0f; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        .qr-container { display: flex; justify-content: center; align-items: center; margin: 20px 0; }
+        .qr-code {
+            width: 180px; height: 180px;
+            background: url('https://yourimagehost.com/qrcode.png') no-repeat center; /* Replace with actual QR code */
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .qr-code:hover { transform: scale(1.05); }
+        .info { background: #f7f2e9; padding: 15px; font-size: 18px; font-weight: 600; border-radius: 10px; margin: 10px 0; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
+        .info:hover { transform: translateY(-3px); }
+        .button {
+            display: block; width: 100%; max-width: 250px;
+            margin: 10px auto; padding: 12px;
+            font-size: 18px; font-weight: 600;
+            text-decoration: none; color: white;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .google-review { background: #4285F4; }
+        .whatsapp { background: #25D366; }
+        .button:hover { opacity: 0.8; }
+        .contact { font-size: 16px; margin-top: 20px; font-weight: 500; color: #5a3823; }
+        .contact a { color: #d2691e; font-weight: 600; text-decoration: none; }
+        .contact a:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .title { font-size: 30px; }
+            .subtitle { font-size: 18px; }
+            .qr-code { width: 150px; height: 150px; }
+            .info { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title">Giveaway</div>
+        <div class="subtitle">Win a Free Chess Set</div>
+        
+        <div class="qr-container">
+            <div class="qr-code"></div>
+        </div>
+
+        <div class="info">⭐ Write a Google review for Rao’s Chess Corner-02.</div>
+        <div class="info">📷 Send a screenshot of your review to WhatsApp.</div>
+        <div class="info">🎉 A lucky winner will receive a free chess set by end of the day.</div>
+
+        <!-- Buttons -->
+        <a href="https://search.google.com/local/writereview?placeid=ChIJ3ZO9dgBbozsRNr-C2J46ap8" class="button google-review" target="_blank">📍 Leave a Google Review</a>
+        <a href="https://wa.me/918431071649" class="button whatsapp" target="_blank">📩 Send Screenshot on WhatsApp</a>
+
+        <div class="contact">
+    📩 Need help? Contact us on 
+    <a href="https://wa.me/918197859289" target="_blank">WhatsApp: +91 8197859289</a>
+        </div>
+
+</body>
+</html>
