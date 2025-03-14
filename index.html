@@ -1,98 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway Chess Sets</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giveaway Chess Sets</title>
+  <!-- Open Graph Meta Tags for WhatsApp Preview -->
+  <meta property="og:title" content="Giveaway - Win a Free Chess Set">
+  <meta property="og:description" content="Write a Google review & send a screenshot on WhatsApp for a chance to win a chess set!">
+  <meta property="og:image" content="https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png">
+  <meta property="og:url" content="https://suppy29.github.io/Giveaway/">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Include Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <style>
+    /* Global Dark Mode Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #121212, #1f1f1f);
+        color: #f5f5f5;
+        padding: 20px;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+    /* Particle Background */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: rgba(34, 34, 34, 0.9);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .title { 
+        font-size: 38px; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        background: linear-gradient(135deg, #ffcc00, #ff6600);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+    }
+    .subtitle { 
+        font-size: 22px; 
+        font-weight: 600; 
+        text-transform: uppercase; 
+        border-bottom: 3px solid #ff6600; 
+        display: inline-block; 
+        padding-bottom: 5px; 
+        margin-bottom: 20px; 
+    }
+    /* Countdown Styles */
+    .countdown-container {
+        background: #252525;
+        color: #ffcc00;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .countdown-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+    .countdown-segment {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 60px;
+    }
+    .countdown-time {
+        font-size: 28px;
+        font-weight: 700;
+        color: #ffcc00;
+        animation: pulse 2s infinite;
+    }
+    .countdown-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .qr-container { 
+        display: flex; 
+        justify-content: center; 
+        margin: 20px 0; 
+    }
+    .qr-code {
+        width: 180px; 
+        height: 180px;
+        background: url('https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png') no-repeat center;
+        background-size: cover;
+        border-radius: 10px;
+        border: 5px solid #ff6600;
+    }
+    .info { 
+        background: rgba(40, 40, 40, 0.9); 
+        padding: 15px 20px; 
+        font-size: 18px; 
+        border-radius: 10px; 
+        margin: 15px 0; 
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3); 
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+    .button {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 15px auto;
+        padding: 14px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+        border-radius: 8px;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .google-review { background: #ffcc00; color: black; }
+    .whatsapp { background: #25D366; }
+    .button:hover { opacity: 0.8; }
+    .contact {
+        font-size: 16px;
+        margin-top: 25px;
+        padding: 15px;
+    }
+    .contact a { color: #ff6600; text-decoration: none; font-weight: 600; }
+    .contact a:hover { text-decoration: underline; }
     
-    <!-- Open Graph Meta Tags for WhatsApp Preview -->
-    <meta property="og:title" content="Giveaway - Win a Free Chess Set">
-    <meta property="og:description" content="Write a Google review & send a screenshot on WhatsApp for a chance to win a chess set!">
-    <meta property="og:image" content="https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png"> <!-- Replace with hosted image URL -->
-    <meta property="og:url" content="https://suppy29.github.io/Giveaway/"> <!-- Replace with your hosted page link -->
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #f3e6d4, #d4af7a);
-            color: #3d1d0f;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .title { font-size: 36px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
-        .subtitle { font-size: 22px; font-weight: 600; text-transform: uppercase; border-bottom: 3px solid #3d1d0f; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-        .qr-container { display: flex; justify-content: center; align-items: center; margin: 20px 0; }
-        .qr-code {
-            width: 180px; height: 180px;
-            background: url('https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png') no-repeat center; /* Replace with actual QR code */
-            background-size: cover;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
-        .qr-code:hover { transform: scale(1.05); }
-        .info { background: #f7f2e9; padding: 15px; font-size: 18px; font-weight: 600; border-radius: 10px; margin: 10px 0; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
-        .info:hover { transform: translateY(-3px); }
-        .button {
-            display: block; width: 100%; max-width: 250px;
-            margin: 10px auto; padding: 12px;
-            font-size: 18px; font-weight: 600;
-            text-decoration: none; color: white;
-            border-radius: 8px; transition: 0.3s;
-        }
-        .google-review { background: #4285F4; }
-        .whatsapp { background: #25D366; }
-        .button:hover { opacity: 0.8; }
-        .contact { font-size: 16px; margin-top: 20px; font-weight: 500; color: #5a3823; }
-        .contact a { color: #d2691e; font-weight: 600; text-decoration: none; }
-        .contact a:hover { text-decoration: underline; }
-        @media (max-width: 768px) {
-            .container { padding: 20px; }
-            .title { font-size: 30px; }
-            .subtitle { font-size: 18px; }
-            .qr-code { width: 150px; height: 150px; }
-            .info { font-size: 16px; }
-        }
-    </style>
+    @media (max-width: 768px) {
+        .container { padding: 20px; }
+        .title { font-size: 32px; }
+        .subtitle { font-size: 18px; }
+        .qr-code { width: 150px; height: 150px; }
+        .info { font-size: 16px; }
+        .countdown-time { font-size: 24px; }
+        .countdown-segment { min-width: 50px; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="title">Giveaway</div>
-        <div class="subtitle">Win a Free Chess Set</div>
-        
-        <div class="qr-container">
-            <div class="qr-code"></div>
-        </div>
-
-        <div class="info">⭐ Write a Google review for Rao’s Chess Corner-02.</div>
-        <div class="info">📷 Send a screenshot of your review to WhatsApp.</div>
-        <div class="info">🎉 A lucky winner will receive a free chess set by end of the day.</div>
-
-        <!-- Buttons -->
-        <a href="https://search.google.com/local/writereview?placeid=ChIJ3ZO9dgBbozsRNr-C2J46ap8" class="button google-review" target="_blank">📍 Leave a Google Review</a>
-        <a href="https://wa.me/918431071649" class="button whatsapp" target="_blank">📩 Send Screenshot on WhatsApp</a>
-
-        <div class="contact">
-    📩 Need help? Contact us on 
-    <a href="https://wa.me/918197859289" target="_blank">WhatsApp: +91 8197859289</a>
-        </div>
-
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+  
+  <div class="container">
+      <div class="title">Giveaway</div>
+      <div class="subtitle">Win a Free Chess Set</div>
+      
+      <!-- Countdown Timer -->
+      <div class="countdown-container">
+          <div class="countdown-title">Giveaway Ends In:</div>
+          <div class="countdown">
+              <div class="countdown-segment">
+                  <div id="days" class="countdown-time">00</div>
+                  <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-segment">
+                  <div id="hours" class="countdown-time">00</div>
+                  <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-segment">
+                  <div id="minutes" class="countdown-time">00</div>
+                  <div class="countdown-label">Mins</div>
+              </div>
+              <div class="countdown-segment">
+                  <div id="seconds" class="countdown-time">00</div>
+                  <div class="countdown-label">Secs</div>
+              </div>
+          </div>
+      </div>
+  
+      <div class="qr-container">
+          <div class="qr-code"></div>
+      </div>
+  
+      <div class="info">⭐ Write a Google review for Rao's Chess Corner-02.</div>
+      <div class="info">📷 Send a screenshot of your review to WhatsApp.</div>
+      <div class="info">🎉 A lucky winner will receive a free chess set!</div>
+  
+      <!-- Buttons -->
+      <a href="https://search.google.com/local/writereview?placeid=ChIJ3ZO9dgBbozsRNr-C2J46ap8" class="button google-review" target="_blank">
+          📍 Leave a Google Review
+      </a>
+      <a href="https://wa.me/918431071649" class="button whatsapp" target="_blank">
+          📩 Send Screenshot on WhatsApp
+      </a>
+  
+      <div class="contact">
+          📩 Need help? Contact us on 
+          <a href="https://wa.me/918197859289" target="_blank">WhatsApp: +91 8197859289</a>
+      </div>
+  </div>
+  
+  <script>
+      // Initialize particles.js with inline configuration
+      particlesJS("particles-js", {
+          "particles": {
+              "number": {
+                  "value": 80,
+                  "density": { "enable": true, "value_area": 800 }
+              },
+              "color": { "value": "#ffffff" },
+              "shape": {
+                  "type": "circle",
+                  "stroke": { "width": 0, "color": "#000000" }
+              },
+              "opacity": { "value": 0.5, "random": false },
+              "size": { "value": 3, "random": true },
+              "line_linked": {
+                  "enable": true,
+                  "distance": 150,
+                  "color": "#ffffff",
+                  "opacity": 0.4,
+                  "width": 1
+              },
+              "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+          },
+          "interactivity": {
+              "detect_on": "canvas",
+              "events": {
+                  "onhover": { "enable": true, "mode": "repulse" },
+                  "onclick": { "enable": true, "mode": "push" }
+              },
+              "modes": {
+                  "repulse": { "distance": 100, "duration": 0.4 },
+                  "push": { "particles_nb": 4 }
+              }
+          },
+          "retina_detect": true
+      });
+  
+      // Countdown Timer
+      const countDownDate = new Date("March 15, 2025 18:30:00 GMT+0530").getTime();
+  
+      const countdown = setInterval(function() {
+          const now = new Date().getTime();
+          const distance = countDownDate - now;
+  
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+          document.getElementById("days").textContent = days.toString().padStart(2, '0');
+          document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+          document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+          document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+  
+          if (distance < 0) {
+              clearInterval(countdown);
+              document.getElementById("days").textContent = "00";
+              document.getElementById("hours").textContent = "00";
+              document.getElementById("minutes").textContent = "00";
+              document.getElementById("seconds").textContent = "00";
+              const countdownContainer = document.querySelector(".countdown-container");
+              countdownContainer.innerHTML = '<div class="countdown-title" style="font-size: 22px; color: #FFD700">Giveaway Ended</div>';
+          }
+      }, 1000);
+  </script>
 </body>
 </html>
