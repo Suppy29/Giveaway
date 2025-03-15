@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giveaway Chess Sets</title>
-  <!-- Open Graph Meta Tags for WhatsApp Preview -->
   <meta property="og:title" content="Giveaway - Win a Free Chess Set">
   <meta property="og:description" content="Write a Google review & send a screenshot on WhatsApp for a chance to win a chess set!">
   <meta property="og:image" content="https://assets.onecompiler.app/43bca35h8/43bca3wqs/your-qr-code.png">
@@ -12,11 +11,9 @@
   <meta name="twitter:card" content="summary_large_image">
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Include Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   
   <style>
-    /* Global Dark Mode Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
         font-family: 'Poppins', sans-serif;
@@ -26,9 +23,8 @@
         padding: 20px;
         min-height: 100vh;
         position: relative;
-        overflow-x: hidden; /* Changed from overflow: hidden to allow vertical scrolling */
+        overflow-x: hidden;
     }
-    /* Particle Background */
     #particles-js {
         position: fixed;
         width: 100%;
@@ -41,7 +37,7 @@
         max-width: 600px;
         margin: 20px auto;
         background: rgba(34, 34, 34, 0.9);
-        padding: 30px;
+        padding: 30px 30px 50px;
         border-radius: 15px;
         box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
         animation: fadeIn 1s ease-in-out;
@@ -68,7 +64,6 @@
         padding-bottom: 5px; 
         margin-bottom: 20px; 
     }
-    /* Countdown Styles */
     .countdown-container {
         background: #252525;
         color: #ffcc00;
@@ -157,7 +152,107 @@
     }
     .contact a { color: #ff6600; text-decoration: none; font-weight: 600; }
     .contact a:hover { text-decoration: underline; }
-    
+    .admin-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 10px;
+    }
+    .admin-btn {
+        background: #1a1a1a;
+        border: 2px solid #ff6600;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #ffcc00;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .admin-btn:hover {
+        background: #ff6600;
+        color: #1a1a1a;
+    }
+    .winner-section {
+        display: none;
+        background: rgba(0,0,0,0.9);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 20px 0 40px;
+        animation: winnerReveal 0.8s ease-out;
+        border: 3px solid #ffcc00;
+    }
+    .winner-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ffcc00, #ff6600);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .winner-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid #ffcc00;
+        margin: 20px auto;
+        object-fit: cover;
+        box-shadow: 0 0 30px rgba(255,204,0,0.4);
+    }
+    .winner-name {
+        font-size: 24px;
+        color: #ffcc00;
+        margin: 15px 0;
+    }
+    .stay-tuned {
+        font-size: 20px;
+        color: #fff;
+        margin-top: 30px;
+        padding: 15px;
+        border-top: 2px solid #ff6600;
+    }
+    .waiting-message {
+        font-size: 24px;
+        color: #ffcc00;
+        padding: 30px;
+        animation: pulse 2s infinite;
+        background: rgba(255,204,0,0.1);
+        border-radius: 15px;
+        margin: 20px 0;
+    }
+    .admin-form {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(34, 34, 34, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        z-index: 1001;
+    }
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        background: #252525;
+        border: 1px solid #ff6600;
+        border-radius: 8px;
+        color: white;
+    }
+    .form-label {
+        display: block;
+        text-align: left;
+        margin: 10px 0 5px;
+        color: #ffcc00;
+    }
+    @keyframes winnerReveal {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
     @media (max-width: 768px) {
         .container { padding: 20px; }
         .title { font-size: 32px; }
@@ -166,18 +261,23 @@
         .info { font-size: 16px; }
         .countdown-time { font-size: 24px; }
         .countdown-segment { min-width: 50px; }
+        .winner-photo { width: 150px; height: 150px; }
+        .winner-title { font-size: 24px; }
+        .waiting-message { font-size: 20px; }
     }
   </style>
 </head>
 <body>
-  <!-- Particle Background -->
   <div id="particles-js"></div>
   
-  <div class="container">
+  <div class="container" id="mainContent">
       <div class="title">Giveaway</div>
       <div class="subtitle">Win a Free Chess Set</div>
       
-      <!-- Countdown Timer -->
+      <div id="winnerSection" class="winner-section">
+          <div id="winnerContent"></div>
+      </div>
+
       <div class="countdown-container">
           <div class="countdown-title">Giveaway Ends In:</div>
           <div class="countdown">
@@ -208,7 +308,6 @@
       <div class="info">📷 Send a screenshot of your review to WhatsApp.</div>
       <div class="info">🎉 A lucky winner will receive a free chess set!</div>
   
-      <!-- Buttons -->
       <a href="https://search.google.com/local/writereview?placeid=ChIJ3ZO9dgBbozsRNr-C2J46ap8" class="button google-review" target="_blank">
           📍 Leave a Google Review
       </a>
@@ -221,72 +320,174 @@
           <a href="https://wa.me/918197859289" target="_blank">WhatsApp: +91 8197859289</a>
       </div>
   </div>
-  
+
+  <div class="admin-panel">
+      <button class="admin-btn" onclick="showAdminForm()">🔑 Admin Access</button>
+      <button class="admin-btn" onclick="toggleWinnerSection()">🎉 Toggle Winner</button>
+  </div>
+
+  <div id="adminForm" class="admin-form">
+      <h3 style="color: #ffcc00; margin-bottom: 20px;">🏆 Set Winner Details</h3>
+      <label class="form-label">Winner's Name:</label>
+      <input type="text" id="inputName" class="form-input">
+      <label class="form-label">Photo URL:</label>
+      <input type="url" id="inputPhoto" class="form-input">
+      <button class="button" style="background: #ff6600; margin-top: 15px;" onclick="setWinnerDetails()">
+          Set Winner
+      </button>
+  </div>
+
   <script>
-      // Initialize particles.js with inline configuration
+      let currentWinner = { name: '', photo: '' };
+      let countdownActive = true;
+      let adminAuthenticated = false;
+
+      // Initialize particles background
       particlesJS("particles-js", {
-          "particles": {
-              "number": {
-                  "value": 80,
-                  "density": { "enable": true, "value_area": 800 }
+          particles: {
+              number: { value: 80, density: { enable: true, value_area: 800 }},
+              color: { value: "#ffffff" },
+              shape: { type: "circle" },
+              opacity: { value: 0.5 },
+              size: { value: 3, random: true },
+              line_linked: {
+                  enable: true,
+                  distance: 150,
+                  color: "#ffffff",
+                  opacity: 0.4,
+                  width: 1
               },
-              "color": { "value": "#ffffff" },
-              "shape": {
-                  "type": "circle",
-                  "stroke": { "width": 0, "color": "#000000" }
-              },
-              "opacity": { "value": 0.5, "random": false },
-              "size": { "value": 3, "random": true },
-              "line_linked": {
-                  "enable": true,
-                  "distance": 150,
-                  "color": "#ffffff",
-                  "opacity": 0.4,
-                  "width": 1
-              },
-              "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+              move: { enable: true, speed: 6 }
           },
-          "interactivity": {
-              "detect_on": "canvas",
-              "events": {
-                  "onhover": { "enable": true, "mode": "repulse" },
-                  "onclick": { "enable": true, "mode": "push" }
-              },
-              "modes": {
-                  "repulse": { "distance": 100, "duration": 0.4 },
-                  "push": { "particles_nb": 4 }
+          interactivity: {
+              detect_on: "canvas",
+              events: {
+                  onhover: { enable: true, mode: "repulse" },
+                  onclick: { enable: true, mode: "push" }
               }
           },
-          "retina_detect": true
+          retina_detect: true
       });
-  
-      // Countdown Timer
+
+      // Set the countdown end date
       const countDownDate = new Date("March 15, 2025 18:30:00 GMT+0530").getTime();
-  
       const countdown = setInterval(function() {
+          if(!countdownActive) return;
+          
           const now = new Date().getTime();
           const distance = countDownDate - now;
-  
+
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
           const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
+
           document.getElementById("days").textContent = days.toString().padStart(2, '0');
           document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
           document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
           document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-  
+
           if (distance < 0) {
               clearInterval(countdown);
-              document.getElementById("days").textContent = "00";
-              document.getElementById("hours").textContent = "00";
-              document.getElementById("minutes").textContent = "00";
-              document.getElementById("seconds").textContent = "00";
-              const countdownContainer = document.querySelector(".countdown-container");
-              countdownContainer.innerHTML = '<div class="countdown-title" style="font-size: 22px; color: #FFD700">Giveaway Ended</div>';
+              endGiveaway();
           }
       }, 1000);
+
+      function endGiveaway() {
+          countdownActive = false;
+          const winnerSection = document.getElementById("winnerSection");
+          const mainContent = document.getElementById("mainContent");
+          
+          if(currentWinner.name && currentWinner.photo) {
+              mainContent.innerHTML = `
+                  <div class="title">Giveaway Ended</div>
+                  <div class="subtitle">Thank you for participating!</div>
+                  ${winnerSection.outerHTML}
+              `;
+          } else {
+              mainContent.innerHTML = `
+                  <div class="title">Giveaway Ended</div>
+                  <div class="subtitle">Results Coming Soon!</div>
+                  <div class="waiting-message">⏳ Winners will be announced shortly</div>
+              `;
+          }
+      }
+
+      function showAdminForm() {
+          const password = prompt("Enter admin password:");
+          if(password === "admin123") {
+              adminAuthenticated = true;
+              document.getElementById("adminForm").style.display = 'block';
+          } else {
+              alert("Incorrect password!");
+          }
+      }
+
+      function setWinnerDetails() {
+          if(!adminAuthenticated) return;
+          
+          currentWinner = {
+              name: document.getElementById("inputName").value,
+              photo: document.getElementById("inputPhoto").value
+          };
+
+          const winnerContent = `
+              <div class="winner-title">🏆 Congratulations to Our Winner 🏆</div>
+              <img src="${currentWinner.photo}" alt="Winner" class="winner-photo">
+              <div class="winner-name">${currentWinner.name}</div>
+              <div class="stay-tuned">Stay tuned for more exciting giveaways!</div>
+          `;
+
+          document.getElementById("winnerContent").innerHTML = winnerContent;
+          document.getElementById("adminForm").style.display = 'none';
+          activateCelebration();
+      }
+
+      function toggleWinnerSection() {
+          if(!adminAuthenticated) return;
+          
+          const section = document.getElementById("winnerSection");
+          section.style.display = section.style.display === 'none' ? 'block' : 'none';
+      }
+
+      function activateCelebration() {
+          const winnerSection = document.getElementById("winnerSection");
+          winnerSection.style.display = 'block';
+          winnerSection.scrollIntoView({ behavior: 'smooth' });
+          
+          // Update particles to celebratory configuration
+          particlesJS("particles-js", {
+              particles: {
+                  number: { value: 150 },
+                  color: { value: ["#ffcc00", "#ff6600", "#ffffff"] },
+                  size: { value: 5 },
+                  move: { speed: 6, out_mode: "bounce" }
+              }
+          });
+          
+          // Confetti effect: reconfigure particles every second for 5 seconds
+          const confettiInterval = setInterval(() => {
+              particlesJS("particles-js", {
+                  particles: {
+                      number: { value: 50 },
+                      color: { value: ["#ffcc00", "#ff6600", "#ffffff"] },
+                      size: { value: 3 },
+                      move: { speed: 8 }
+                  }
+              });
+          }, 1000);
+          
+          setTimeout(() => clearInterval(confettiInterval), 5000);
+      }
+
+      // On window load, check if winner details exist
+      window.onload = function() {
+          if(currentWinner.name && currentWinner.photo) {
+              document.getElementById("winnerSection").style.display = 'block';
+          } else {
+              document.getElementById("winnerSection").style.display = 'none';
+          }
+      };
   </script>
 </body>
-</html>
+  </html>
