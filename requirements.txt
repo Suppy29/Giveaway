@@ -1,0 +1,17 @@
+# Core Telegram Bot Dependencies
+python-telegram-bot==20.7
+aiohttp==3.9.1
+
+# Environment and Configuration
+python-dotenv==1.0.0
+
+# Beautiful Terminal Output
+rich==13.7.0
+
+# Data Handling
+requests==2.31.0
+
+# Optional: For enhanced features
+Pillow==10.1.0  # For image processing if needed
+schedule==1.2.0  # For scheduled posts
+pytz==2023.3     # For timezone handling
