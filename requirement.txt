@@ -1,0 +1,6 @@
+# Requirements for the Ultimate GIF Bot
+python-telegram-bot==20.3  # Main library for Telegram bot
+python-dotenv==1.0.0        # For loading .env files with secrets
+rich==13.7.0                # For colorful terminal output
+aiohttp==3.9.3              # For making API requests to Tenor
+requests==2.31.0            # Alternative HTTP library (some APIs prefer this)
